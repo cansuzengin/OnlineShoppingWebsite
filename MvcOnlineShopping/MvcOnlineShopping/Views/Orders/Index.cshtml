@@ -1,0 +1,43 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBLOrder>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Siparişler</h2>
+
+
+@using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Sipariş Adını Girin: &nbsp </b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style=" background-color: #899697">
+        <th>Id</th>
+        <th>Üye Id</th>
+        <th>Ürün Id</th>
+        <th>Tarih</th>
+        <th>Tutar</th>
+        <th>Adres</th>
+        <th>Kargo</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.Id</td>
+            <td>@order.MemberId</td>
+            <td>@order.ProductId</td>
+            <td>@order.Date</td>
+            <td>@order.Price</td>
+            <td>@order.TBLAddress.Address</td>
+            <td>@order.TBLCargo.Name</td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))

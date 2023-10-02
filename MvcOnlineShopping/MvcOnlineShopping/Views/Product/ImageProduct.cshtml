@@ -1,0 +1,102 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@model List<TBLProduct>
+@{
+    ViewBag.Title = "ImageProduct";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            top: auto;
+        }
+
+        .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            margin-top:100px;
+        }
+
+        .container {
+            height: 94vh;
+            display: flex;
+            overflow: hidden;
+        }
+        .card {
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            position: fixed;
+            top: 50px;
+            left: 350px;
+        }
+        .card2 {
+            box-shadow: 0 0 10px 9px rgba(153,153,153,0.705);
+            width: 500px;
+            height: 550px;
+            text-align: center;
+            font-family: arial;
+            position: fixed;
+            top: 50px;
+            right: 70px;
+        }
+        .input-group {
+            position: absolute;
+            top: 150px;
+            width: 320px;
+            transition: .5s;
+            position: fixed;
+            top: 40px;
+            right: 160px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            margin: 5px 0;
+            background: transparent;
+            border-bottom: 1px solid rgba(153,153,153,0.705);
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @foreach (var x in Model)
+        {
+            <div class="left">
+                <div class="card">
+                    <img src="@x.Image" style="display: block; margin: auto; height: 500px; width: 300px; object-fit: cover; float:left; margin:auto">
+                </div>
+            </div>
+            <div class="right">
+                <div class="card2">
+                    <div class="input-group">
+                        <label class="input-field">Ürün adı:</label> <p> @x.Name</p>
+                        <br />
+                        <label class="input-field">Ürün rengi:</label> <p>@x.Color</p>  
+                        <br />
+                        <label class="input-field">Ürün Fiyatı:</label> <p>@x.Price</p>  
+                        <br />
+                        <label class="input-field">Stok adedi:</label> <p>@x.Stock</p> 
+                        <br />
+                        <label class="input-field">Açıklama:</label><p>@x.Statement</p>
+                        <br />
+                    </div>
+                    
+                </div>
+                
+            </div>
+        }
+        </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBLComments>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yorumlar</h2>
+
+<table class="table table-striped">
+    <tr style=" background-color: #899697">
+        <th>Ürün Adı</th>
+        <th>Üye Adı</th>
+        <th>Yorum</th>
+        <th>Aktiflik</th>
+    </tr>
+    @foreach (var comment in Model)
+    {
+        <tr>
+            <td>@comment.TBLProduct.Name</td>
+            <td>@comment.TBLMember.Name @comment.TBLMember.Surname</td>
+            <td>@comment.Comment</td>
+            <td><a href="/Comments/Comment/@comment.Id" class="btn btn-success" style="background-color: #899697; color: #ffffff">Aktifleştir</a></td>       
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Comments/ActiveComment/" class="btn btn-group" style="background-color: #899697; color: #ffffff">Aktif Yorumlar</a>

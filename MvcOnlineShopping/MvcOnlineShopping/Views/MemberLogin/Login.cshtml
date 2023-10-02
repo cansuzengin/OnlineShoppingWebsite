@@ -1,0 +1,311 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            background-image: url(https://i.hizliresim.com/3braqoe.jpg);
+            position: absolute;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .form-box {
+            width: 400px;
+            height: 500px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.842);
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            border-radius: 35px;
+            margin: 6% auto;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .button-box {
+            width: 220px;
+            margin: 35px auto;
+            position: relative;
+            box-shadow: 0 0 20px 9px #220d051a;
+            border-radius: 35px;
+        }
+
+        .toggle-btn {
+            position: relative;
+            padding: 10px 30px;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 13px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        #btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 110px;
+            height: 100%;
+            background: linear-gradient(to right,#1c1c2e, #087fce);
+            border-radius: 35px;
+            transition: .5s;
+        }
+
+        .button-box button:nth-child(2) {
+            color: #000000;
+        }
+
+        .input-group {
+            position: absolute;
+            top: 150px;
+            width: 320px;
+            transition: .5s;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            margin: 5px 0;
+            background: transparent;
+            border-bottom: 1px solid rgba(153,153,153,0.705);
+            outline: none;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 85%;
+            padding: 10px;
+            border: none;
+            background: linear-gradient(to right, #1c1c2e,#087fce);
+            cursor: pointer;
+            color: #ffff;
+            font-size: 15px;
+            font-weight: 600;
+            margin: auto;
+            outline: none;
+            border-radius: 35px;
+        }
+
+        .input-group a {
+            display: inline-block;
+            text-decoration: none;
+            color: #777;
+            margin: 30px 10px 30px 0px;
+            font-size: 12px;
+        }
+
+        #Login {
+            left: 50px;
+        }
+
+        #Register {
+            left: 450px;
+        }
+
+        dialog {
+            width: 350px;
+            height: 250px;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            margin: 10% auto;
+            position: relative;
+            font-size: 15px;
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            margin: 10% auto;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+            dialog::backdrop {
+                background: rgb(99,110,114,.9);
+            }
+
+            dialog div {
+                border-bottom: 1px solid #b2bec3;
+                padding: 20px;
+                float: right;
+                width: 100%;
+                padding: 10px 0;
+                border: none;
+                margin: 5px 0;
+                background: transparent;
+                border-bottom: 1px solid rgba(153,153,153,0.705);
+                outline: none;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="Login()">Giriş</button>
+                <button type="button" class="toggle-btn" onclick="Register()">Kayıt</button>
+            </div>
+            <form id="Login" class="input-group" method="post" action="/MemberLogin/Login/">
+                <input type="email" name="Email" class="input-field" placeholder="E-mail giriniz..." required />
+                <input type="password" name="Password" class="input-field" placeholder="Şifre giriniz..." required />
+                <a href="/MemberLogin/ResetPassword/">Şifremi unuttum</a>
+                <button type="submit" class="submit-btn"> Giriş Yap</button>
+                <div class=" w3l-form-group">
+                    <input type="hidden" class="form-control" name="Member" id="Member" value="@ViewBag.value2" />
+                </div>
+                <a href="/AdminLogin/Login/">Yönetici Girişine Git</a>
+            </form>
+            <form id="Register" style="top: 110px;" class="input-group" method="post" action="/MemberLogin/Register/">
+                <input type="text" name="Name" class="input-field" placeholder="İsim giriniz..." required />
+                <input type="text" name="Surname" class="input-field" placeholder="Soyisim giriniz..." required />
+                <input type="email" name="Email" class="input-field" placeholder="E-mail giriniz..." required />
+                <input type="password" name="Password" class="input-field" placeholder="Şifre giriniz..." required />
+                <input type="text" name="Telephone" class="input-field" placeholder="Telefon giriniz..." required />
+                <input type="text" name="Recovery" class="input-field" placeholder="Şifre Kurtarma giriniz..." required />
+                <label class="checkbox"><input type="checkbox" name="checkbox" required="" checked><i></i><a href="#" style="background-color:transparent" id="myBtn" class="checkbox">Şartları</a><a>okudum kabul ediyorum..</a></label>
+
+                <button type="submit" class="submit-btn"> Kayıt Ol</button>
+                <div class=" w3l-form-group">
+                    <input type="hidden" class="form-control" name="Member" id="Member" value="@ViewBag.value1" />
+                </div>
+            </form>
+            <dialog id="modal1">
+                <form action="" method="dialog">
+                    <br />
+                    <h2 style="font-family:'Times New Roman';color:black;margin:auto;font-size:20px">  &nbsp Hata Mesajı</h2>
+                    <div>
+                        <p style="color:black;font-size:20px">Kullanıcı adı veya şifre hatalı!</p>
+                    </div>
+                    <div>
+                        <menu>
+                            <button class="submit-btn" style="font-size:15px;width:150px;border:none;  background:#275964;color:#ffffff;padding:10px" value="onay">Tamam</button>
+                        </menu>
+                    </div>
+
+                </form>
+            </dialog>
+            <dialog id="modal2">
+                <form action="" method="dialog">
+                    <br />
+                    <h2 style="font-family:'Times New Roman';color:black; font-size:large;font:bold;margin:auto">  &nbsp Kayıt Mesajı</h2>
+                    <div>
+                        <p style="color:black; font-size:20px;">Kayıt Başarılı...</p>
+                    </div>
+                    <div>
+                        <menu>
+                            <button class="submit-btn" style="font-size:15px;width:150px;border:none;  background:#275964;color:#ffffff;padding:10px" value="onay">Tamam</button>
+                        </menu>
+                    </div>
+
+                </form>
+            </dialog>
+            <div id="myModal" class="modal">
+
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Some text in the Modal..</p>
+                </div>
+
+            </div>
+            <script>
+
+                if (document.getElementById("Member").value == 1) {
+                    modal1.showModal();
+                }
+                if (document.getElementById("Member").value == 2) {
+                    modal2.showModal();
+                }
+            </script>
+        </div>
+
+    </div>
+    <script>
+        var x = document.getElementById("Login");
+        var y = document.getElementById("Register");
+        var z = document.getElementById("btn");
+        function Register() {
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+        function Login() {
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";
+        }
+    </script>
+    <script>
+        var modal = document.getElementById("myModal");
+
+        var btn = document.getElementById("myBtn");
+
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

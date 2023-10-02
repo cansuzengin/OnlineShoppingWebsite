@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="65f735bf0f9f4eb097e3aba606c9c750" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLAdmin" Width="1.5" PointX="7.75" PointY="2.25" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLBasket" Width="1.5" PointX="5.25" PointY="5.25" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLBrand" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLCategory" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLGender" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLLike" Width="1.5" PointX="8.25" PointY="5.625" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLMember" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLMessage" Width="1.5" PointX="5.75" PointY="9.25" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLOrder" Width="1.5" PointX="5.25" PointY="2" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLProduct" Width="1.5" PointX="3" PointY="4.625" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLBasket_TBLCategory" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLBasket_TBLMember" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLBasket_TBLProduct" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLProduct_TBLBrand" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLProduct_TBLCategory" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLProduct_TBLGender" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLLike_TBLMember" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLLike_TBLProduct" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLMember" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLComments" Width="1.5" PointX="10" PointY="0.875" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLComments_TBLMember" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLComments_TBLProduct" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLAddress" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="DBONLINESHOPPINGModel.TBLCargo" Width="1.5" PointX="8.375" PointY="8.875" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLAddress" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLCargo" />
+        <AssociationConnector Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLProduct" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

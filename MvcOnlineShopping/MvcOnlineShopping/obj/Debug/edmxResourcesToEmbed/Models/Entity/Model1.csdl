@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBONLINESHOPPINGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DBONLINESHOPPINGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBLAdmin" EntityType="DBONLINESHOPPINGModel.TBLAdmin" />
+    <EntitySet Name="TBLBasket" EntityType="DBONLINESHOPPINGModel.TBLBasket" />
+    <EntitySet Name="TBLBrand" EntityType="DBONLINESHOPPINGModel.TBLBrand" />
+    <EntitySet Name="TBLCategory" EntityType="DBONLINESHOPPINGModel.TBLCategory" />
+    <EntitySet Name="TBLGender" EntityType="DBONLINESHOPPINGModel.TBLGender" />
+    <EntitySet Name="TBLLike" EntityType="DBONLINESHOPPINGModel.TBLLike" />
+    <EntitySet Name="TBLMember" EntityType="DBONLINESHOPPINGModel.TBLMember" />
+    <EntitySet Name="TBLMessage" EntityType="DBONLINESHOPPINGModel.TBLMessage" />
+    <EntitySet Name="TBLOrder" EntityType="DBONLINESHOPPINGModel.TBLOrder" />
+    <EntitySet Name="TBLProduct" EntityType="DBONLINESHOPPINGModel.TBLProduct" />
+    <AssociationSet Name="FK_TBLBasket_TBLCategory" Association="DBONLINESHOPPINGModel.FK_TBLBasket_TBLCategory">
+      <End Role="TBLCategory" EntitySet="TBLCategory" />
+      <End Role="TBLBasket" EntitySet="TBLBasket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLBasket_TBLMember" Association="DBONLINESHOPPINGModel.FK_TBLBasket_TBLMember">
+      <End Role="TBLMember" EntitySet="TBLMember" />
+      <End Role="TBLBasket" EntitySet="TBLBasket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLBasket_TBLProduct" Association="DBONLINESHOPPINGModel.FK_TBLBasket_TBLProduct">
+      <End Role="TBLProduct" EntitySet="TBLProduct" />
+      <End Role="TBLBasket" EntitySet="TBLBasket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLProduct_TBLBrand" Association="DBONLINESHOPPINGModel.FK_TBLProduct_TBLBrand">
+      <End Role="TBLBrand" EntitySet="TBLBrand" />
+      <End Role="TBLProduct" EntitySet="TBLProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLProduct_TBLCategory" Association="DBONLINESHOPPINGModel.FK_TBLProduct_TBLCategory">
+      <End Role="TBLCategory" EntitySet="TBLCategory" />
+      <End Role="TBLProduct" EntitySet="TBLProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLProduct_TBLGender" Association="DBONLINESHOPPINGModel.FK_TBLProduct_TBLGender">
+      <End Role="TBLGender" EntitySet="TBLGender" />
+      <End Role="TBLProduct" EntitySet="TBLProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLLike_TBLMember" Association="DBONLINESHOPPINGModel.FK_TBLLike_TBLMember">
+      <End Role="TBLMember" EntitySet="TBLMember" />
+      <End Role="TBLLike" EntitySet="TBLLike" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLLike_TBLProduct" Association="DBONLINESHOPPINGModel.FK_TBLLike_TBLProduct">
+      <End Role="TBLProduct" EntitySet="TBLProduct" />
+      <End Role="TBLLike" EntitySet="TBLLike" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLOrder_TBLMember" Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLMember">
+      <End Role="TBLMember" EntitySet="TBLMember" />
+      <End Role="TBLOrder" EntitySet="TBLOrder" />
+    </AssociationSet>
+    <FunctionImport Name="total_number_of_products" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="total_number_of_brands" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="total_number_of_categories" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="active_member" ReturnType="Collection(String)" />
+    <FunctionImport Name="brand_with_most_products" ReturnType="Collection(String)" />
+    <FunctionImport Name="category_with_most_products" ReturnType="Collection(String)" />
+    <FunctionImport Name="most_liked_product" ReturnType="Collection(String)" />
+    <FunctionImport Name="number_of_message" ReturnType="Collection(Int32)" />
+    <EntitySet Name="TBLComments" EntityType="DBONLINESHOPPINGModel.TBLComments" />
+    <AssociationSet Name="FK_TBLComments_TBLMember" Association="DBONLINESHOPPINGModel.FK_TBLComments_TBLMember">
+      <End Role="TBLMember" EntitySet="TBLMember" />
+      <End Role="TBLComments" EntitySet="TBLComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLComments_TBLProduct" Association="DBONLINESHOPPINGModel.FK_TBLComments_TBLProduct">
+      <End Role="TBLProduct" EntitySet="TBLProduct" />
+      <End Role="TBLComments" EntitySet="TBLComments" />
+    </AssociationSet>
+    <FunctionImport Name="star_average" ReturnType="Collection(DBONLINESHOPPINGModel.star_average_Result)" />
+    <FunctionImport Name="best_products" ReturnType="Collection(String)" />
+    <FunctionImport Name="best_like_product" ReturnType="Collection(Int32)" />
+    <EntitySet Name="TBLAddress" EntityType="DBONLINESHOPPINGModel.TBLAddress" />
+    <EntitySet Name="TBLCargo" EntityType="DBONLINESHOPPINGModel.TBLCargo" />
+    <AssociationSet Name="FK_TBLOrder_TBLAddress" Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLAddress">
+      <End Role="TBLAddress" EntitySet="TBLAddress" />
+      <End Role="TBLOrder" EntitySet="TBLOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLOrder_TBLCargo" Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLCargo">
+      <End Role="TBLCargo" EntitySet="TBLCargo" />
+      <End Role="TBLOrder" EntitySet="TBLOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLOrder_TBLProduct" Association="DBONLINESHOPPINGModel.FK_TBLOrder_TBLProduct">
+      <End Role="TBLProduct" EntitySet="TBLProduct" />
+      <End Role="TBLOrder" EntitySet="TBLOrder" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TBLAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Authority" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Recovery" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLBasket">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="DateOfAdding" Type="DateTime" Precision="3" />
+    <Property Name="Piece" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="TBLCategory" Relationship="DBONLINESHOPPINGModel.FK_TBLBasket_TBLCategory" FromRole="TBLBasket" ToRole="TBLCategory" />
+    <NavigationProperty Name="TBLMember" Relationship="DBONLINESHOPPINGModel.FK_TBLBasket_TBLMember" FromRole="TBLBasket" ToRole="TBLMember" />
+    <NavigationProperty Name="TBLProduct" Relationship="DBONLINESHOPPINGModel.FK_TBLBasket_TBLProduct" FromRole="TBLBasket" ToRole="TBLProduct" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLBrand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="TBLProduct" Relationship="DBONLINESHOPPINGModel.FK_TBLProduct_TBLBrand" FromRole="TBLBrand" ToRole="TBLProduct" />
+  </EntityType>
+  <EntityType Name="TBLCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="TBLBasket" Relationship="DBONLINESHOPPINGModel.FK_TBLBasket_TBLCategory" FromRole="TBLCategory" ToRole="TBLBasket" />
+    <NavigationProperty Name="TBLProduct" Relationship="DBONLINESHOPPINGModel.FK_TBLProduct_TBLCategory" FromRole="TBLCategory" ToRole="TBLProduct" />
+  </EntityType>
+  <EntityType Name="TBLGender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLProduct" Relationship="DBONLINESHOPPINGModel.FK_TBLProduct_TBLGender" FromRole="TBLGender" ToRole="TBLProduct" />
+  </EntityType>
+  <EntityType Name="TBLLike">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="MemberId" Type="Int32" />
+    <NavigationProperty Name="TBLMember" Relationship="DBONLINESHOPPINGModel.FK_TBLLike_TBLMember" FromRole="TBLLike" ToRole="TBLMember" />
+    <NavigationProperty Name="TBLProduct" Relationship="DBONLINESHOPPINGModel.FK_TBLLike_TBLProduct" FromRole="TBLLike" ToRole="TBLProduct" />
+  </EntityType>
+  <EntityType Name="TBLMember">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLBasket" Relationship="DBONLINESHOPPINGModel.FK_TBLBasket_TBLMember" FromRole="TBLMember" ToRole="TBLBasket" />
+    <NavigationProperty Name="TBLLike" Relationship="DBONLINESHOPPINGModel.FK_TBLLike_TBLMember" FromRole="TBLMember" ToRole="TBLLike" />
+    <NavigationProperty Name="TBLOrder" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLMember" FromRole="TBLMember" ToRole="TBLOrder" />
+    <Property Name="Recovery" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLComments" Relationship="DBONLINESHOPPINGModel.FK_TBLComments_TBLMember" FromRole="TBLMember" ToRole="TBLComments" />
+  </EntityType>
+  <EntityType Name="TBLMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="TBLMember" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLMember" FromRole="TBLOrder" ToRole="TBLMember" />
+    <Property Name="Address" Type="Int32" />
+    <Property Name="Cargo" Type="Int32" />
+    <NavigationProperty Name="TBLAddress" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLAddress" FromRole="TBLOrder" ToRole="TBLAddress" />
+    <NavigationProperty Name="TBLCargo" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLCargo" FromRole="TBLOrder" ToRole="TBLCargo" />
+    <Property Name="ProductId" Type="Int32" />
+    <NavigationProperty Name="TBLProduct" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLProduct" FromRole="TBLOrder" ToRole="TBLProduct" />
+    <Property Name="Piece" Type="Int32" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="GenderId" Type="Int32" />
+    <Property Name="BrandId" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DateOfAdding" Type="DateTime" Precision="3" />
+    <Property Name="Color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Statement" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Stock" Type="Int32" />
+    <NavigationProperty Name="TBLBasket" Relationship="DBONLINESHOPPINGModel.FK_TBLBasket_TBLProduct" FromRole="TBLProduct" ToRole="TBLBasket" />
+    <NavigationProperty Name="TBLBrand" Relationship="DBONLINESHOPPINGModel.FK_TBLProduct_TBLBrand" FromRole="TBLProduct" ToRole="TBLBrand" />
+    <NavigationProperty Name="TBLCategory" Relationship="DBONLINESHOPPINGModel.FK_TBLProduct_TBLCategory" FromRole="TBLProduct" ToRole="TBLCategory" />
+    <NavigationProperty Name="TBLGender" Relationship="DBONLINESHOPPINGModel.FK_TBLProduct_TBLGender" FromRole="TBLProduct" ToRole="TBLGender" />
+    <NavigationProperty Name="TBLLike" Relationship="DBONLINESHOPPINGModel.FK_TBLLike_TBLProduct" FromRole="TBLProduct" ToRole="TBLLike" />
+    <NavigationProperty Name="TBLComments" Relationship="DBONLINESHOPPINGModel.FK_TBLComments_TBLProduct" FromRole="TBLProduct" ToRole="TBLComments" />
+    <NavigationProperty Name="TBLOrder" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLProduct" FromRole="TBLProduct" ToRole="TBLOrder" />
+    <Property Name="Star" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_TBLBasket_TBLCategory">
+    <End Type="DBONLINESHOPPINGModel.TBLCategory" Role="TBLCategory" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLBasket" Role="TBLBasket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLBasket">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLBasket_TBLMember">
+    <End Type="DBONLINESHOPPINGModel.TBLMember" Role="TBLMember" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLBasket" Role="TBLBasket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLMember">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLBasket">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLBasket_TBLProduct">
+    <End Type="DBONLINESHOPPINGModel.TBLProduct" Role="TBLProduct" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLBasket" Role="TBLBasket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLBasket">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLProduct_TBLBrand">
+    <End Type="DBONLINESHOPPINGModel.TBLBrand" Role="TBLBrand" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLProduct" Role="TBLProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLProduct">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLProduct_TBLCategory">
+    <End Type="DBONLINESHOPPINGModel.TBLCategory" Role="TBLCategory" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLProduct" Role="TBLProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLProduct">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLProduct_TBLGender">
+    <End Type="DBONLINESHOPPINGModel.TBLGender" Role="TBLGender" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLProduct" Role="TBLProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLGender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLProduct">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLLike_TBLMember">
+    <End Type="DBONLINESHOPPINGModel.TBLMember" Role="TBLMember" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLLike" Role="TBLLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLMember">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLLike">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLLike_TBLProduct">
+    <End Type="DBONLINESHOPPINGModel.TBLProduct" Role="TBLProduct" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLLike" Role="TBLLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLLike">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLOrder_TBLMember">
+    <End Type="DBONLINESHOPPINGModel.TBLMember" Role="TBLMember" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLOrder" Role="TBLOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLMember">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLOrder">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TBLComments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="MemberId" Type="Int32" />
+    <NavigationProperty Name="TBLMember" Relationship="DBONLINESHOPPINGModel.FK_TBLComments_TBLMember" FromRole="TBLComments" ToRole="TBLMember" />
+    <NavigationProperty Name="TBLProduct" Relationship="DBONLINESHOPPINGModel.FK_TBLComments_TBLProduct" FromRole="TBLComments" ToRole="TBLProduct" />
+    <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
+    <Property Name="Rating" Type="Int32" />
+    <Property Name="Status" Type="Boolean" DefaultValue="False" />
+  </EntityType>
+  <Association Name="FK_TBLComments_TBLMember">
+    <End Type="DBONLINESHOPPINGModel.TBLMember" Role="TBLMember" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLComments" Role="TBLComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLMember">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLComments">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLComments_TBLProduct">
+    <End Type="DBONLINESHOPPINGModel.TBLProduct" Role="TBLProduct" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLComments" Role="TBLComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLComments">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="star_average_Result">
+    <Property Type="Int32" Name="ProductId" Nullable="true" />
+    <Property Type="Int32" Name="Column1" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="TBLAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLOrder" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLAddress" FromRole="TBLAddress" ToRole="TBLOrder" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLCargo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLOrder" Relationship="DBONLINESHOPPINGModel.FK_TBLOrder_TBLCargo" FromRole="TBLCargo" ToRole="TBLOrder" />
+  </EntityType>
+  <Association Name="FK_TBLOrder_TBLAddress">
+    <End Type="DBONLINESHOPPINGModel.TBLAddress" Role="TBLAddress" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLOrder" Role="TBLOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLAddress">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLOrder">
+        <PropertyRef Name="Address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLOrder_TBLCargo">
+    <End Type="DBONLINESHOPPINGModel.TBLCargo" Role="TBLCargo" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLOrder" Role="TBLOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLCargo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLOrder">
+        <PropertyRef Name="Cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLOrder_TBLProduct">
+    <End Type="DBONLINESHOPPINGModel.TBLProduct" Role="TBLProduct" Multiplicity="0..1" />
+    <End Type="DBONLINESHOPPINGModel.TBLOrder" Role="TBLOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLProduct">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLOrder">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

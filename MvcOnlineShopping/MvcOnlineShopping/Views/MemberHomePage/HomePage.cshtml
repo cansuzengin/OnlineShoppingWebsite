@@ -1,0 +1,693 @@
+﻿@model MvcOnlineShopping.Models.Classes.Class1
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <title>HomePage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Spartan',sans-serif;
+        }
+
+        h1 {
+            font-size: 50px;
+            line-height: 64px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #222;
+        }
+
+        h6 {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #465b52;
+            margin: 15px 0 20px 0;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            #navbar > li {
+                list-style: none;
+                padding: 0 20px;
+                position: relative;
+            }
+
+                #navbar > li > a {
+                    text-decoration: none;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    transition: 0.3s ease;
+                }
+
+                #navbar > li:hover ul {
+                    display: block;
+                }
+
+            #navbar ul {
+                background: #E3E6F3;
+                width: 120px;
+                position: absolute;
+                top: 20px;
+                left: 0px;
+                display: none;
+            }
+
+                #navbar ul li a {
+                    display: block;
+                    padding: 7px 12px;
+                    color: #000000;
+                    font-size: 14px;
+                    text-decoration: none;
+                }
+
+            #navbar li a:hover,
+            #navbar li a.active {
+                color: #088178;
+            }
+
+                #navbar li a.active::after,
+                #navbar li a:hover::after {
+                    content: "";
+                    width: 30%;
+                    height: 2px;
+                    background: #088178;
+                    position: absolute;
+                    bottom: -4px;
+                    left: 20px;
+                }
+
+        .logo {
+            font-size: 25px;
+            color: #333;
+            font-weight: bolder;
+            text-decoration: none;
+            transition: 1s ease;
+        }
+
+            .logo:hover {
+                color: #9a5d5d;
+            }
+
+        #hero {
+            background-image: url("../images/1.jpg");
+            height: 90vh;
+            width: 100%;
+            background-size: cover;
+            background-position: top 25% right 0;
+            padding: 0 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+            #hero h4 {
+                padding-bottom: 15px;
+            }
+
+            #hero h1 {
+                color: #088178;
+            }
+
+            #hero button {
+                background-color: #9a5d5d;
+                color: #E3E6F3;
+                border: 10px;
+                padding: 14px 50px 14px 50px;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                font-weight: 700;
+                font-size: 15px;
+                border-radius: 30px;
+                transition: 1s ease;
+            }
+
+                #hero button:hover {
+                    background-color: black;
+                }
+
+        .section-p1 {
+            padding: 40px 20px;
+        }
+
+        .section-m1 {
+            margin: 40px 0;
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+            footer .col {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+
+            footer h4 {
+                font-size: 14px;
+                padding-bottom: 20px;
+            }
+
+            footer p {
+                font-size: 13px;
+                margin: 0 0 8px 0;
+            }
+
+            footer a {
+                font-size: 13px;
+                text-decoration: none;
+                color: #222;
+                margin-bottom: 16px;
+            }
+
+            footer .follow {
+                margin-bottom: 20px;
+            }
+
+                footer .follow i {
+                    color: #465b52;
+                    padding-right: 4px;
+                    cursor: pointer;
+                }
+
+            footer .install .row img {
+                border: 1px solid #088178;
+                border-radius: 6px;
+            }
+
+            footer .install img {
+                margin: 10px 0 15px 0;
+            }
+
+            footer .follow i:hover,
+            footer a:hover {
+                color: #088178;
+            }
+
+            footer .copyright {
+                width: 100%;
+                text-align: center;
+            }
+
+        .contact .row {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+            .contact .row form {
+                flex: 1 1 40rem;
+                padding: 2rem 2rem;
+                box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+                border: .1rem solid rgba(0,0,0,.1);
+                background: #e3e6f3;
+                width: 100px;
+                height: 600px;
+                line-height: 100px;
+                border-radius: 50px;
+            }
+
+            .contact .row .image {
+                flex: 1 1 40rem;
+            }
+
+                .contact .row .image img {
+                    width: 100%;
+                }
+
+            .contact .row form .box {
+                padding: 1rem;
+                font-size: 1rem;
+                color: #333;
+                text-transform: none;
+                border: 0.2rem solid rgba(0,0,0,.1);
+                border-radius: .5rem;
+                margin: 0rem 0;
+                width: 100%;
+            }
+
+                .contact .row form .box:focus {
+                    border-color: var(--pink);
+                }
+
+            .contact .row form textarea {
+                height: 8rem;
+                resize: none;
+            }
+
+            .contact .row form .btn {
+                background-color: #9a5d5d;
+                color: #E3E6F3;
+                border: 10px;
+                padding: 14px 50px 14px 50px;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                font-weight: 700;
+                font-size: 15px;
+                border-radius: 30px;
+                transition: 1s ease;
+            }
+
+                .contact .row form .btn:hover {
+                    background-color: #000000;
+                }
+
+        .heading {
+            text-align: center;
+            font-size: 3rem;
+            color: #333;
+            padding: 1rem;
+            margin: 2rem 0;
+            background: rgba(255,51,153,.05);
+        }
+
+            .heading span {
+                color: var(--pink);
+            }
+
+        #about {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #e3e6f3;
+            width: 100%;
+            height: 40vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+            #about h4 {
+                color: #4b4a4a;
+                font-size: 14px;
+            }
+
+            #about h2 {
+                color: #000;
+                font-size: 30px;
+                padding: 10px 0;
+            }
+
+                #about h2 span {
+                    color: #088178;
+                }
+
+        #sm-banner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+            #sm-banner .banner-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+                text-align: center;
+                background-image: url("../images/banner.jpg");
+                min-width: 580px;
+                height: 50vh;
+                background-size: cover;
+                background-position: center;
+                padding: 30px;
+            }
+
+            #sm-banner .banner-box2 {
+                background-image: url("../images/banner2.jpg");
+                align-items: flex-start;
+            }
+
+            #sm-banner h4 {
+                color: #000;
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            #sm-banner h2 {
+                color: #000;
+                font-size: 20px;
+                font-weight: 800;
+            }
+
+            #sm-banner span {
+                color: #000;
+                font-size: 14px;
+                font-weight: 500;
+                padding-bottom: 15px;
+            }
+
+            #sm-banner .banner-box:hover button {
+                background: #088178;
+                border: 1px solid #088178;
+            }
+
+        button.white {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 11px 18px;
+            color: #fff;
+            background-color: transparent;
+            cursor: pointer;
+            border: 1px solid #fff;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        #banner3 .banner-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            background-image: url("../images/banner3.jpg");
+            min-width: 30%;
+            height: 30vh;
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        #banner3 .banner-box2 {
+            background-image: url("../images/banner4.jpg");
+        }
+
+        #banner3 .banner-box3 {
+            background-image: url("../images/banner6.jpg");
+            align-items: flex-start;
+        }
+
+        #banner3 {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 0 80px;
+        }
+
+            #banner3 h2 {
+                color: #000;
+                font-weight: 900;
+                font-size: 22px;
+            }
+
+            #banner3 h4 {
+                color: #000;
+                font-weight: 800;
+                font-size: 15px;
+            }
+
+            #banner3 .banner-box:hover button {
+                background: #088178;
+                border: 1px solid #088178;
+            }
+        dialog {
+            width: 350px;
+            height: 250px;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            margin: 10% auto;
+            position: relative;
+            font-size: 15px;
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            margin: 10% auto;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+            dialog::backdrop {
+                background: rgb(99,110,114,.9);
+            }
+
+            dialog div {
+                border-bottom: 1px solid #b2bec3;
+                padding: 20px;
+                float: right;
+                width: 100%;
+                padding: 10px 0;
+                border: none;
+                margin: 5px 0;
+                background: transparent;
+                border-bottom: 1px solid rgba(153,153,153,0.705);
+                outline: none;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <section id="header">
+            <a href="#" class="logo">ModaBu<span>.</span></a>
+            <div>
+                <ul id="navbar">
+                    <li><a class="active" href="#hero">Ana Sayfa</a></li>
+                    <li><a href="#sm-banner">Alışveriş</a></li>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                    <li>
+                        <a href="settings.html"><i class="fas fa-cog"></i></a>
+                        <ul>
+                            <li><a href="/MemberLogin/Login/">Kullanıcı Giriş</a></li>
+                            <li><a href="/AdminLogin/Login/">Yönetici Giriş</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="hero">
+            <h4>Büyük İndirim!</h4>
+            <h2>Tüm Ürünlerde</h2>
+            <h1>Süper Fırsatlar...</h1>
+            <p>Yılbaşına özel %50 indirimlerle fırsatları yakalayın!</p>
+            <form style="display: inline" action="/MemberLogin/Login/" method="get">
+                <button class="white">Alışveriş Yap</button>
+            </form>
+        </section>
+
+        <section id="sm-banner" class="section-p1">
+            <div class="banner-box">
+                <h4>Fırsatlar..</h4>
+                <h2>Büyük Kış İndirimi</h2>
+                <span>Kış yaklaşırken belirli ürünlerde %30 indirim sizi bekliyor.</span>
+                <form style="display: inline" action="/MemberLogin/Login/" method="get">
+                    <button class="white">Alışveriş Yap</button>
+                </form>
+            </div>
+            <div class="banner-box banner-box2">
+                <h4>Fırsatlar..</h4>
+                <h2>İkinci üründe %40'a varan indirim</h2>
+                <span>Aldığınız bir ürünün yanında ikinci üründe %40 indirim sizi bekliyor.</span>
+                <form  style="display: inline" action="/MemberLogin/Login/" method="get">
+                    <button class="white">Alışveriş Yap</button>
+                </form>
+            </div>
+        </section>
+        <section id="banner3">
+            <div class="banner-box">
+                <h2>Erkek Giyim</h2>
+                <h3></h3>
+                <span></span>
+                <form style="display: inline" action="/MemberLogin/Login/" method="get">
+                    <button class="white">Alışveriş Yap</button>
+                </form>
+            </div>
+            <div class="banner-box banner-box2">
+                <h2>Kadın Giyim</h2>
+                <h3></h3>
+                <span></span>
+                <form style="display: inline" action="/MemberLogin/Login/" method="get">
+                    <button class="white">Alışveriş Yap</button>
+                </form>
+            </div>
+            <div class="banner-box banner-box3">
+                <h2>Çocuk Giyim</h2>
+                <h3></h3>
+                <span></span>
+                <form style="display: inline" action="/MemberLogin/Login/" method="get">
+                    <button class="white">Alışveriş Yap</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <h2>Hakkımızda </h2>
+            <h4>
+                ModaBu, merkezi Konya'da bulunan Türkiye merkezli bir e-ticaret platformudur. <br /> ModaBu, ModaBu grup bünyesinde faaliyet göstermektedir. 2022 yılında Cansu Zengin tarafından
+                kurulan ModaBu, moda ve perakende sektöründe uzmanlaşmış özel bir şirkettir.
+            </h4>
+        </section>
+
+        <section class="contact" id="contact">
+            <h1 class="heading"><span>İletişim</span> </h1>
+            <div class="row">
+                <form action="/MemberHomePage/Contact/" method="post">
+                    <input type="text" placeholder="Ad Soyad" class="box" name="Name" />
+                    <input type="email" placeholder="E-mail" class="box" name="Mail" />
+                    <input type="number" placeholder="Telefon" class="box" name="Phone" />
+                    <textarea name="Message" class="box" placeholder="Mesaj" id="" cols="30" rows="10"></textarea>
+                    <input type="submit" value="Mesaj Gönder" class="btn" />
+                    <div>
+                        <input type="hidden" class="form-control" name="Message" id="Message" value="@ViewBag.value" />
+                    </div>
+                </form>
+                <div class="image">
+                    <img src="~/images/1656569137_2-illustration_svg.svg" alt="" />
+                </div>
+            </div>
+        </section>
+
+        <dialog id="modal1">
+            <form action="" method="dialog">
+                <br />
+                <h2 style="font-family:'Times New Roman';color:black; font-size:large;font:bold;margin:auto">  &nbsp Başarılı Mesaj</h2>
+                <div>
+                    <p style="color:black; font-size:20px;">Mesajınız başarılı bir şekilde gönderildi..</p>
+                </div>
+                <div>
+                    <menu>
+                        <button class="submit-btn" style="font-size:15px;width:150px;border:none;  background:#275964;color:#ffffff;padding:10px" value="onay">Tamam</button>
+                    </menu>
+                </div>
+
+            </form>
+        </dialog>
+
+        <footer class="section-p1">
+            <div class="col">
+                <h4>İletişim</h4>
+                <p><strong>Adres:</strong> Bosna Hersek Mahallesi Osmanlı Caddesi Konya/Türkiye</p>
+                <p><strong>Telefon:</strong> 05354025861</p>
+                <p><strong>Çalışma Saatleri:</strong> 08.00 - 22.00, Pazartesi - Cuma</p>
+                <div class="follow">
+                    <h4>Takip Edin </h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h4>Hakkımızda</h4>
+                <a href="#">Teslimat Bilgileri</a>
+                <a href="#">Gizlilik Politikası</a>
+                <a href="#">Şartlar & Koşullar</a>
+                <a href="#">Bize Ulaşın</a>
+            </div>
+            <div class="col">
+                <h4>Hesabım</h4>
+                <a href="#">Giriş</a>
+                <a href="#">Kart Görüntüle</a>
+                <a href="#">Şikayet</a>
+                <a href="#">Yardım</a>
+            </div>
+            <div class="col install">
+                <h4>Uygulamayı Yükleyin</h4>
+                <p>App Store veya Google Play</p>
+                <div class="row">
+                    <img src="~/images/google.png" alt="" style="width:10%" />
+                    <img src="~/images/store.png" alt="" style="width:10%" />
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Konya / 2022</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        if (document.getElementById("Message").value == 1) {
+            modal1.showModal();
+        }
+    </script>
+    <script>
+        let shoppingCart = document.querySelector('.shopping-cart');
+        document.querySelector('#cart-btn').onclick = () => {
+            shoppingCart.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

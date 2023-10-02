@@ -1,0 +1,39 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBLMessage>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Mesajlar</h2>
+
+
+@using (Html.BeginForm("Index", "Message", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Mesajı Giriniz: &nbsp </b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style=" background-color: #899697">
+        <th>Id</th>
+        <th>İsim</th>
+        <th>E-Mail</th>
+        <th>Telefon</th>
+        <th>Mesaj</th>
+    </tr>
+    @foreach (var mesaj in Model)
+    {
+        <tr>
+            <td>@mesaj.Id</td>
+            <td>@mesaj.Name</td>
+            <td>@mesaj.Mail</td>
+            <td>@mesaj.Phone</td>
+            <td>@mesaj.Message</td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))

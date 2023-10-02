@@ -1,0 +1,19 @@
+﻿@model MvcOnlineShopping.Models.Entity.TBLBrand
+@{
+    ViewBag.Title = "AddingBrand";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Marka Ekle</h2>
+
+<form class="form-group" method="post">
+    <div style="margin-top:15px">
+        <label>Marka Adı</label>
+        @Html.TextBoxFor(k => k.Name, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:15px">
+        <button class="btn btn-group" style="background-color: #899697; color: #ffffff">Kategori Ekle</button>
+    </div>
+    <input type="hidden" name="Status" value="true" />
+</form>

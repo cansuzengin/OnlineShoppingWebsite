@@ -1,0 +1,60 @@
+﻿@model MvcOnlineShopping.Models.Entity.TBLProduct
+@{
+    ViewBag.Title = "AddingProduct";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ürün Ekle</h2>
+
+<form class="form-group" method="post">
+    <div style="margin-top:15px">
+        <label>Ürün Adı</label>
+        @Html.TextBoxFor(k => k.Name, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kategori Türü</label>
+        @Html.DropDownListFor(k => k.TBLCategory.Id, (List<SelectListItem>)ViewBag.values3,
+       new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kategori Tipi</label>
+        @Html.DropDownListFor(k => k.TBLGender.Id, (List<SelectListItem>)ViewBag.values5,
+       new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Marka</label>
+        @Html.DropDownListFor(k => k.TBLBrand.Id, (List<SelectListItem>)ViewBag.values4,
+       new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Fiyat</label>
+        @Html.TextBoxFor(k => k.Price, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Stok adedi</label>
+        @Html.TextBoxFor(k => k.Stock, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Ekleme Tarihi</label>
+        <input type="text" class="form-control" name="DateOfAdding" value="@DateTime.Now.ToShortDateString()" />
+    </div>
+    <div style="margin-top:15px">
+        <label>Renk</label>
+        @Html.TextBoxFor(k => k.Color, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Fotoğraf</label>
+        @Html.TextBoxFor(k => k.Image, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Açıklama</label>
+        @Html.TextBoxFor(k => k.Statement, new { @class = "form-control" })
+    </div>
+
+    <div style="margin-top:15px">
+        <button class="btn btn-group" style="background-color: #899697; color: #ffffff">Ürün Ekle</button>
+    </div>
+    <input type="hidden" name="durum" value="true" />
+</form>
+
+

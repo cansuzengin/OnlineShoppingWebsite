@@ -1,0 +1,25 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@model List<TBLCategory>
+
+@{
+    ViewBag.Title = "PasiveCategory";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Pasif Kategoriler</h2>
+
+<table class="table table-striped">
+    <tr style=" background-color: #808080">
+        <th>Kategori Id</th>
+        <th>Kategori Adı</th>
+        <th>Aktifleştir</th>
+    </tr>
+    @foreach (var ktg in Model)
+    {
+        <tr>
+            <td>@ktg.Id</td>
+            <td>@ktg.Name</td>
+            <td><a href="/Category/ActiveCategory/@ktg.Id" class="btn btn-success" style="background-color: #899697; color: #ffffff">Aktifleştir</a></td>
+        </tr>
+    }
+</table>

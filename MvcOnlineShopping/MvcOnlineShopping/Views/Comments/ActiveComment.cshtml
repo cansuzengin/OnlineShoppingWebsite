@@ -1,0 +1,27 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@model List<TBLComments>
+@{
+    ViewBag.Title = "ActiveComment";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h2>Aktif Yorumlar</h2>
+
+<table class="table table-striped">
+    <tr style=" background-color: #808080">
+        <th>Ürün Adı</th>
+        <th>Üye Adı</th>
+        <th>Yorum</th>
+        <th>Aktiflik</th>
+    </tr>
+    @foreach (var comment in Model)
+    {
+        <tr>
+            <td>@comment.TBLProduct.Name</td>
+            <td>@comment.TBLMember.Name @comment.TBLMember.Surname</td>
+            <td>@comment.Comment</td>
+            <td><a href="/Comments/PasiveComment/@comment.Id" class="btn btn-success" style="background-color: #899697; color: #ffffff">Pasifleştir</a></td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,317 @@
+﻿@model MvcOnlineShopping.Models.Entity.TBLMember
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shopping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Spartan',sans-serif;
+        }
+
+        h1 {
+            font-size: 50px;
+            line-height: 64px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #222;
+        }
+
+        h6 {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #465b52;
+            margin: 15px 0 20px 0;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        .right {
+            width: 80%;
+            height: 80%;
+            margin-left:20px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            border-radius: 15px;
+        }
+
+        .container {
+            height: 74vh;
+            width: 130vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .main {
+            width: 50%;
+            height: 110%;
+            margin: auto;
+            padding-top: 100px;
+            padding-left: 30px;
+        }
+
+            .main .text {
+                width: 120%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+
+        .button2 {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 120%;
+            font-size: 18px;
+            border-radius: 35px;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 150%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 100%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        dialog {
+            width: 360px;
+            height: 260px;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            margin: 10% auto;
+            position: relative;
+            font-size: 15px;
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            margin: 10% auto;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+            dialog::backdrop {
+                background: rgb(99,110,114,.9);
+            }
+
+            dialog div {
+                border-bottom: 1px solid #b2bec3;
+                padding: 20px;
+                float: right;
+                width: 95%;
+                height: 95px;
+                padding: 10px 0;
+                border: none;
+                margin: 5px 0;
+                background: transparent;
+                border-bottom: 1px solid rgba(153,153,153,0.705);
+                outline: none;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="right">
+            <div class="main">
+                <form class="input-group" method="post" action="/MemberSettings/UpdatePassword/">
+
+                    <div class="form-group row">
+
+                        <input type="password" class="text" name="Password" placeholder="Eski Şifre..." required />
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <input type="password" class="text" name="Password2" placeholder="Yeni Şifre..." required />
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="offset-sm-2 col-sm-10">
+
+                            <div class="checkbox">
+
+                                <label>
+
+                                    <input type="checkbox" required=""> <a href="#" id="myBtn" style="font-size:small">Şartları</a> okudum, kabul ediyorum.
+
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div id="myModal" class="modal">
+
+                        <div class="modal-content">
+
+                            <span class="close">&times;</span>
+                            <p>Some text in the Modal..</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="offset-sm-2 col-sm-10">
+
+                            <button type="submit" class="button2">Güncelle</button>
+
+                        </div>
+
+                    </div>
+                    <div class=" w3l-form-group">
+                        <input type="hidden" class="form-control" name="Member" id="Member" value="@ViewBag.value" />
+                    </div>
+
+                </form>
+                <dialog id="modal1">
+                    <form action="" method="dialog">
+                        <br />
+                        <h2 style="font-family:'Times New Roman';color:black;margin:auto;font-size:20px">  &nbsp Mesaj</h2>
+                        <div>
+                            <p style="color:black;font-size:20px">Şifreniz başarıyla değiştirildi!</p>
+                        </div>
+                        <div>
+                            <menu>
+                                <button class="submit-btn" style="font-size:15px;width:150px;border:none;  background:#275964;color:#ffffff;padding:10px"
+                                        value="onay">
+                                    Tamam
+                                </button>
+                            </menu>
+                        </div>
+                    </form>
+                </dialog>
+                <dialog id="modal2">
+                    <form action="" method="dialog">
+                        <br />
+                        <h2 style="font-family:'Times New Roman';color:black;margin:auto;font-size:20px">  &nbsp Hata Mesajı</h2>
+                        <div>
+                            <p style="color:black;font-size:20px">Şifreniz yanlış. Lütfen tekrar deneyiniz!</p>
+                        </div>
+                        <div>
+                            <menu>
+                                <button class="submit-btn" style="font-size:15px;width:150px;border:none;  background:#275964;color:#ffffff;padding:10px"
+                                        value="onay">
+                                    Tamam
+                                </button>
+                            </menu>
+                        </div>
+
+                    </form>
+                </dialog>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (document.getElementById("Member").value == 1) {
+            modal1.showModal();
+        }
+        if (document.getElementById("Member").value == 2) {
+            modal2.showModal();
+        }
+    </script>
+    <script>
+        var modal = document.getElementById("myModal");
+
+        var btn = document.getElementById("myBtn");
+
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

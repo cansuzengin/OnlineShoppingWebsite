@@ -1,0 +1,45 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBLCategory>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Kategori Adını Girin: &nbsp </b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style=" background-color: #899697">
+        <th>Kategori Id</th>
+        <th>Kategori Tipi</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var ctg in Model)
+    {
+        <tr>
+            <td>@ctg.Id</td>
+            <td>@ctg.Name</td>
+            <td>
+                @Html.ActionLink("Sil", "RemoveCategory", new { Id = ctg.Id }, new
+                        {
+                            @class
+               = "btn btn-danger",
+                            onclick = "return confirm('Silmek istiyor musunuz?')"
+                        })
+            </td>
+            <td><a href="/Category/FetchCategory/@ctg.Id" class="btn btn-success" style="background-color:#217139; color:#ffffff">Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Category/AddingCategory/" class="btn btn-group" style="background-color: #899697; color: #ffffff">Yeni Kategori Ekle</a>
+<a href="/Category/PasiveCategory/" class="btn btn-group" style="background-color: #899697; color: #ffffff">Pasif Kategoriler</a>

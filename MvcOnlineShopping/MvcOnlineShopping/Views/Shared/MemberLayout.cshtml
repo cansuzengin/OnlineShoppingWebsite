@@ -1,0 +1,130 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <title>MemberLayout</title>
+    <style>
+
+        body {
+            width: 100%;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            #navbar > li {
+                list-style: none;
+                padding: 0 20px;
+                position: relative;
+            }
+
+                #navbar > li > a {
+                    text-decoration: none;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    transition: 0.3s ease;
+                }
+
+                #navbar > li:hover ul {
+                    display: block;
+                }
+
+            #navbar ul {
+                background: #E3E6F3;
+                width: 120px;
+                position: absolute;
+                top: 20px;
+                left: 0px;
+                display: none;
+            }
+
+                #navbar ul li a {
+                    display: block;
+                    padding: 7px 12px;
+                    color: #000000;
+                    font-size: 14px;
+                    text-decoration: none;
+                }
+
+            #navbar li a:hover,
+            #navbar li a.active {
+                color: #088178;
+            }
+
+                #navbar li a.active::after,
+                #navbar li a:hover::after {
+                    content: "";
+                    width: 30%;
+                    height: 2px;
+                    background: #088178;
+                    position: absolute;
+                    bottom: -4px;
+                    left: 20px;
+                }
+
+        .logo {
+            font-size: 25px;
+            color: #333;
+            font-weight: bolder;
+            text-decoration: none;
+            transition: 1s ease;
+        }
+
+            .logo:hover {
+                color: #9a5d5d;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <section id="header">
+            <a href="#" class="logo">ModaBu<span>.</span></a>
+            <div>
+                <ul id="navbar">
+                    <li><a href="/MemberHomePage/ShoppingHomePage/">Ana Sayfa</a></li>
+                    <li><a href="/MemberHomePage/ShoppingPage/">Alışveriş</a></li>
+                    <li><a href="/MemberHomePage/Favorites/">Favorilerim</a></li>
+                    <li><a href="/MemberHomePage/Orders/">Siparişlerim</a></li>
+                    <li><a href="/MemberHomePage/ShoppingCart/"><i class="fas fa-shopping-bag"></i></a></li>
+                    <li>
+                        <a href="#"><i class="fas fa-cog"></i></a>
+                        <ul>
+                            <li><a href="/MemberHomePage/Profiles/">Profilim</a></li>
+                            <li><a href="/MemberSettings/Index/">Şifre Değiştirme</a></li>
+                            <li><a href="/MemberHomePage/Address/">Adreslerim</a></li>
+                            <li><a href="/MemberLogin/LogOut/">Oturumu Kapat</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="main">
+        @RenderBody()
+    </div>
+</body>
+</html>

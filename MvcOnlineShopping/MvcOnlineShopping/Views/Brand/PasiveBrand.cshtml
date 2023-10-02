@@ -1,0 +1,25 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@model List<TBLBrand>
+
+@{
+    ViewBag.Title = "PasiveBrand";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Pasif Markalar</h2>
+
+<table class="table table-striped">
+    <tr style=" background-color:#808080">
+        <th>Marka Id</th>
+        <th>Marka Adı</th>
+        <th>Aktifleştir</th>
+    </tr>
+    @foreach (var ktg in Model)
+    {
+        <tr>
+            <td>@ktg.Id</td>
+            <td>@ktg.Name</td>
+            <td><a href="/Brand/ActiveBrand/@ktg.Id" class="btn btn-success" style="background-color: #899697; color: #ffffff">Aktifleştir</a></td>
+        </tr>
+    }
+</table>

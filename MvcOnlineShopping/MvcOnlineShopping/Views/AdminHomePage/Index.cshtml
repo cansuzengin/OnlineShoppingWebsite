@@ -1,0 +1,264 @@
+﻿@model MvcOnlineShopping.Models.Entity.TBLAdmin
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            border-radius: 15px;
+        }
+
+        .container {
+            height: 94vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .main {
+            width: 50%;
+            height: 50%;
+            margin-left: 150px;
+            margin-top:15px;
+        }
+        .main2 {
+            top: 80px;
+            width: 90%;
+            height: 60%;
+            margin-right: 100px;
+            margin:auto;
+        }
+
+        .card {
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+        .button2 {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 120%;
+            font-size: 18px;
+            border-radius:35px;
+            margin-top:20px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover, a:hover {
+            opacity: 0.7;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="main">
+                <div class="card">
+                    <h3 style="text-align:center">Yönetici Profili</h3>
+                    <img src="@ViewBag.image" alt="John" style="width:100%">
+                    <h3>@ViewBag.name @ViewBag.surname</h3>
+                    <p class="title">Yönetici</p>
+                    <p>Konya Teknik Üniversitesi</p>
+                    <div style="margin: 24px 0;">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                    <p><button>Profil</button></p>
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="main2">
+                @using (Html.BeginForm("Index", "AdminHomePage", FormMethod.Post))
+                {
+                    <form class="form-horizontal">
+
+                        <div class="form-group row">
+
+                            <label for="inputName" class="col-sm-2 col-form-label">Ad</label>
+
+                            <div class="col-sm-10">
+
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="inputName" class="col-sm-2 col-form-label">Soyad</label>
+
+                            <div class="col-sm-10">
+
+                                @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="inputName" class="col-sm-2 col-form-label">Email</label>
+
+                            <div class="col-sm-10">
+
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="offset-sm-2 col-sm-10">
+
+                                <div class="checkbox">
+
+                                <label>
+
+                                    <input type="checkbox" required=""> <a href="#" id="myBtn" style="font-size:small">Şartları</a> okudum, kabul ediyorum.
+
+                                </label>
+
+                            </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div id="myModal" class="modal">
+
+                            <div class="modal-content">
+
+                                <span class="close">&times;</span>
+                                <p>Some text in the Modal..</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="offset-sm-2 col-sm-10">
+
+                                <button type="submit" class="button2">Güncelle</button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById("myModal");
+
+        var btn = document.getElementById("myBtn");
+
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

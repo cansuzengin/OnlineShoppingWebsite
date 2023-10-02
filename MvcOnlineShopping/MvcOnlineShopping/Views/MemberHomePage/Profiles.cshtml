@@ -1,0 +1,309 @@
+﻿@model MvcOnlineShopping.Models.Entity.TBLMember
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shopping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Spartan',sans-serif;
+        }
+
+        h1 {
+            font-size: 50px;
+            line-height: 64px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #222;
+        }
+
+        h6 {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #465b52;
+            margin: 15px 0 20px 0;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        .left {
+            width: 110%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right {
+            margin-right:20px;
+            width: 110%;
+            height:90%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            border-radius: 15px;
+        }
+
+        .container {
+            height: 90vh;
+            width:180vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .main {
+            width: 50%;
+            height: 50%;
+            margin-left: 100px;
+            margin-top: 15px;
+        }
+
+        .main2 {
+            top: 80px;
+            width: 70%;
+            height: 70%;
+            margin: auto;
+        }
+            .main2 .text {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+        .card {
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .button2 {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            border-radius: 35px;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">
+            <div class="main">
+                <div class="card">
+                    <h3 style="text-align:center">Kullanıcı Profili</h3>
+                    <img src="@ViewBag.image" alt="John" style="width:100%">
+                    <h3>@ViewBag.name @ViewBag.surname</h3>
+                    <p class="title">Kullanıcı</p>
+                    <p>Konya Teknik Üniversitesi</p>
+                    <div style="margin: 24px 0;">
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                    <p><button>Profil</button></p>
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="main2">
+                @using (Html.BeginForm("Profiles", "MemberHomePage", FormMethod.Post))
+                {
+                    <form class="form-horizontal">
+
+                        <div class="form-group row">
+
+                            <label for="inputName" class="col-sm-2 col-form-label">Ad</label>
+
+                                @Html.TextBoxFor(x => x.Name, new { @class = "text" })
+
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="inputName" class="col-sm-2 col-form-label">Soyad</label>
+
+                                @Html.TextBoxFor(x => x.Surname, new { @class = "text" })
+
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="inputName" class="col-sm-2 col-form-label">Email</label>
+
+                                @Html.TextBoxFor(x => x.Email, new { @class = "text" })
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="offset-sm-2 col-sm-10">
+
+                                <div class="checkbox">
+
+                                    <label>
+
+                                        <input type="checkbox" required=""> <a href="#" id="myBtn" style="font-size:small">Şartları</a> okudum, kabul ediyorum.
+
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div id="myModal" class="modal">
+
+                            <div class="modal-content">
+
+                                <span class="close">&times;</span>
+                                <p>Some text in the Modal..</p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="offset-sm-2 col-sm-10">
+
+                                <button type="submit" class="button2">Güncelle</button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById("myModal");
+
+        var btn = document.getElementById("myBtn");
+
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBLMember>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Üyeler</h2>
+@using (Html.BeginForm("Index", "Member", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Üye Adını Girin: &nbsp </b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style=" background-color: #899697">
+        <th>Id</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Email</th>
+        <th>Şifre</th>
+        <th>Telefon</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var ktg in Model)
+    {
+        <tr>
+            <td>@ktg.Id</td>
+            <td>@ktg.Name</td>
+            <td>@ktg.Surname</td>
+            <td>@ktg.Email</td>
+            <td>@ktg.Password</td>
+            <td>@ktg.Telephone</td>
+            <td>
+                @Html.ActionLink("Sil", "RemoveMember", new { Id = ktg.Id }, new
+                        {
+                            @class
+               = "btn btn-danger",
+                            onclick = "return confirm('Silmek istiyor musunuz?')"
+                        })
+            </td>
+            <td><a href="/Member/FetchMember/@ktg.Id" class="btn btn-success" style="background-color:#217139; color:#ffffff">Güncelle</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Member/AddingMember/" class="btn btn-group" style="background-color: #899697; color: #ffffff">Yeni Üye Ekle</a>
+

@@ -1,0 +1,520 @@
+﻿@model MvcOnlineShopping.Models.Classes.Class1
+@{
+    ViewBag.Title = "ShoppingPage";
+    Layout = "~/Views/Shared/MemberLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Shopping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Spartan',sans-serif;
+        }
+
+        h1 {
+            font-size: 50px;
+            line-height: 64px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #222;
+        }
+
+        h6 {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #465b52;
+            margin: 15px 0 20px 0;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        #product1 {
+            text-align: center;
+        }
+
+            #product1 .pro {
+                width: 22%;
+                min-width: 250px;
+                padding: 10px 12px;
+                border: 1px solid #cce7d0;
+                border-radius: 15px;
+                cursor: pointer;
+                box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+                margin: 15px 0;
+                transition: 0.2s ease;
+                position: relative;
+            }
+
+                #product1 .pro:hover {
+                    box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
+                }
+
+                #product1 .pro img {
+                    width: 90%;
+                    border-radius: 20px;
+                }
+
+        .section-p1 {
+            padding: 40px 20px;
+        }
+
+        .section-m1 {
+            margin: 40px 0;
+        }
+
+        #product1 .pro .des {
+            text-align: start;
+            padding: 10px 0px;
+        }
+
+            #product1 .pro .des span {
+                color: #606063;
+                font-size: 12px;
+            }
+
+            #product1 .pro .des h5 {
+                padding-top: 7px;
+                color: #1a1a1a;
+                font-size: 14px;
+            }
+
+            #product1 .pro .des i {
+                font-size: 12px;
+                color: rgb(243, 181, 25);
+            }
+
+            #product1 .pro .des h4 {
+                padding-top: 7px;
+                font-size: 15px;
+                font-weight: 700;
+                color: #088178;
+            }
+
+        #product1 .pro .cart {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50px;
+            background-color: #e8f6ea;
+            font-weight: 500;
+            color: #373333;
+            border: 1px solid #cce7d0;
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+        }
+
+            #product1 .pro .cart:hover {
+                background-color: #eacaca;
+            }
+
+        #product1 .pro .heart {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50px;
+            background-color: #e8f6ea;
+            font-weight: 500;
+            color: #a01212;
+            border: 1px solid #cce7d0;
+            position: absolute;
+            bottom: 20px;
+            right: 60px;
+        }
+
+            #product1 .pro .heart:hover {
+                background-color: #eacaca;
+            }
+
+
+        #product1 .pro-container {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            padding-left: 0px;
+            padding-right: 300px;
+            flex-wrap: wrap;
+        }
+
+            #product1 .pro-container a {
+                text-decoration: none;
+            }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+            footer .col {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+
+            footer h4 {
+                font-size: 14px;
+                padding-bottom: 20px;
+            }
+
+            footer p {
+                font-size: 13px;
+                margin: 0 0 8px 0;
+            }
+
+            footer a {
+                font-size: 13px;
+                text-decoration: none;
+                color: #222;
+                margin-bottom: 16px;
+            }
+
+            footer .follow {
+                margin-bottom: 20px;
+            }
+
+                footer .follow i {
+                    color: #465b52;
+                    padding-right: 4px;
+                    cursor: pointer;
+                }
+
+            footer .install .row img {
+                border: 1px solid #088178;
+                border-radius: 6px;
+            }
+
+            footer .install img {
+                margin: 10px 0 15px 0;
+            }
+
+            footer .follow i:hover,
+            footer a:hover {
+                color: #088178;
+            }
+
+            footer .copyright {
+                width: 100%;
+                text-align: center;
+            }
+
+        .shopping-cart {
+            position: absolute;
+            top: 22%;
+            right: 1rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px 9px rgba(153,153,153,0.705);
+            width: 28rem;
+            height: 50rem;
+            background: #e3e6f3;
+        }
+
+            .shopping-cart .box {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                position: relative;
+                margin: 1rem 0;
+            }
+
+                .shopping-cart .box img {
+                    height: 3rem;
+                }
+
+                .shopping-cart .box .fa-trash {
+                    font-size: 1rem;
+                    top: 50%;
+                    right: 2rem;
+                    cursor: pointer;
+                    color: black;
+                    transform: translateY(-50%);
+                    transform: translateX(1000%);
+                    padding-right: 10px;
+                }
+
+                    .shopping-cart .box .fa-trash:hover {
+                        color: #ff00dc;
+                    }
+
+                .shopping-cart .box .content h3 {
+                    color: black;
+                    font-size: 1rem;
+                    padding-bottom: 1rem;
+                }
+
+                .shopping-cart .box .content span {
+                    color: black;
+                    font-size: 0.8rem;
+                }
+
+                .shopping-cart .box .content .quantity {
+                    padding-left: 1rem;
+                }
+
+            .shopping-cart .total {
+                font-size: 1.2rem;
+                padding: 1rem;
+                text-align: center;
+                color: black;
+            }
+
+        .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: .8rem 3rem;
+            font-size: 1.3rem;
+            border-radius: .5rem;
+            border: .2rem solid black;
+            color: black;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background: #2c3e50;
+                color: #fff;
+            }
+
+        .shopping-cart .btn {
+            display: block;
+            text-align: center;
+            margin: 2rem;
+            margin-top: 0px;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .shopping-cart .box .row .column {
+            border-radius: 1rem;
+            border: .1rem solid black;
+            box-shadow: #808080;
+        }
+
+        .container {
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            color: black;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input1 {
+            font-size: 15px;
+            text-decoration: none;
+            color: black;
+        }
+
+
+        select {
+            background-color: #8d8989;
+            color: white;
+            padding: 16px;
+            font-size: 14px;
+            border-radius: 10px;
+            border: .1rem solid black;
+            cursor: pointer;
+            margin: 10px;
+            width: 88%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <section id="product1" class="section-p1">
+            <div class="pro-container">
+                @foreach (var value in Model.value1)
+                {
+                    <a href="/ProductPage/Index/@value.Id">
+                        <div class="pro">
+                            <img src="@value.Image" alt="" />
+                            <div class="des">
+                                <span>@value.TBLBrand.Name</span>
+                                <h5>@value.Name</h5>
+                                @if (value.Star != null)
+                                {
+                                    <div class="form-group">
+                                        <span class="text-warning" >
+                                            @for (int? x = 0; x < value.Star; x++)
+                                            {
+                                                <i class="glyphicon glyphicon-star"></i>
+                                            }
+                                            @for (int? x = value.Star; x < 5; x++)
+                                            {
+                                                <i class="glyphicon glyphicon-star-empty"></i>
+                                            }
+
+                                        </span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    for (int? x = 0; x < 5; x++)
+                                    {
+                                        <i class="glyphicon glyphicon-star-empty"></i>
+                                    }
+                                }
+
+                                <h4>@value.Price</h4>
+                            </div>
+
+                            <a href="/MemberHomePage/AddingCart/@value.Id" class="cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                            @{
+                                var keep = 0;
+                                foreach (var x in ViewBag.like)
+                                {
+                                    if (value.Id == x)
+                                    {
+                                        <a href="/MemberHomePage/AddingLike/@value.Id" class="heart"><i class="glyphicon glyphicon-heart" aria-hidden="true"></i></a>
+                                        keep = 1;
+                                    }
+                                }
+
+                                if (keep == 0)
+                                {
+                                    <a href="/MemberHomePage/AddingLike/@value.Id" class="heart"><i class="glyphicon glyphicon-heart-empty" aria-hidden="true"></i></a>
+                                }
+
+                            }
+                        </div>
+                    </a>
+
+                }
+
+            </div>
+        </section>
+        <div class="shopping-cart">
+            <div class="box">
+                <div class="row">
+                    <div class="container">
+                        <form method="post" action="/MemberHomePage/ShoppingPage/">
+                            <select name="gender" id="gender">
+                                <option value="null">Ürün Tipi Seçiniz...</option>
+                                @foreach (var value in Model.value6)
+                                {
+                                    <option value="@value.Id">
+                                        @Html.ActionLink(@value.Name, "ShoppingPage", "MemberHomePage", new { gender = @value.Id }, new { @class = "input1" })
+                                    </option>
+                                }
+                            </select>
+
+                            <select name="category" id="category">
+                                <option value="null">Kategori Seçiniz...</option>
+                                @foreach (var value in Model.value4)
+                                {
+                                    <option value="@value.Id">
+                                        @Html.ActionLink(@value.Name, "ShoppingPage", "MemberHomePage", new { category = @value.Id }, new { @class = "input1" })
+                                    </option>
+
+                                }
+                            </select>
+
+                            <select name="brand" id="brand">
+                                <option value="null">Marka Seçiniz...</option>
+                                @foreach (var value in Model.value2)
+                                {
+                                    <option value="@value.Id">
+                                        @Html.ActionLink(@value.Name, "ShoppingPage", "MemberHomePage", new { brand = @value.Id }, new { @class = "input1" })
+                                    </option>
+
+                                }
+                            </select>
+                            <select name="color" id="color">
+                                <option value="null">Renk Seçiniz...</option>
+                                <option value="Siyah">Siyah</option>
+                                <option value="Beyaz">Beyaz</option>
+                                <option value="Kırmızı">Kırmızı</option>
+                                <option value="Bej">Bej</option>
+                            </select>
+                            <input class="btn" type="submit" value="Filtrele" style="margin:auto; margin-top:20px;" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <footer class="section-p1">
+            <div class="col">
+                <h4>İletişim</h4>
+                <p><strong>Adres:</strong> Bosna Hersek Mahallesi Osmanlı Caddesi Konya/Türkiye</p>
+                <p><strong>Telefon:</strong> 05354025861</p>
+                <p><strong>Çalışma Saatleri:</strong> 08.00 - 22.00, Pazartesi - Cuma</p>
+                <div class="follow">
+                    <h4>Takip Edin </h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h4>Hakkımızda</h4>
+                <a href="#">Teslimat Bilgileri</a>
+                <a href="#">Gizlilik Politikası</a>
+                <a href="#">Şartlar & Koşullar</a>
+                <a href="#">Bize Ulaşın</a>
+            </div>
+            <div class="col">
+                <h4>Hesabım</h4>
+                <a href="#">Giriş</a>
+                <a href="#">Kart Görüntüle</a>
+                <a href="#">Şikayet</a>
+                <a href="#">Yardım</a>
+            </div>
+            <div class="col install">
+                <h4>Uygulamayı Yükleyin</h4>
+                <p>App Store veya Google Play</p>
+                <div class="row">
+                    <img src="~/images/google.png" alt="" style="width:10%" />
+                    <img src="~/images/store.png" alt="" style="width:10%" />
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Konya / 2022</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        let shoppingCart = document.querySelector('.shopping-cart');
+        document.querySelector('#cart-btn').onclick = () => {
+            shoppingCart.classList.toggle('active');
+        }
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿@model MvcOnlineShopping.Models.Entity.TBLAdmin
+@{
+    ViewBag.Title = "AddingAdmin";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yönetici Ekle</h2>
+
+<form class="form-group" method="post">
+    <div style="margin-top:15px">
+        <label>Yönetici Adı</label>
+        @Html.TextBoxFor(k => k.Name, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yönetici Soyadı</label>
+        @Html.TextBoxFor(k => k.Surname, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yönetici Email</label>
+        @Html.TextBoxFor(k => k.Email, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yönetici Şifre</label>
+        @Html.TextBoxFor(k => k.Password, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yönetici Yetki</label>
+        @Html.TextBoxFor(k => k.Authority, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-group" style="background-color: #899697; color: #ffffff">Yönetici Ekle</button>
+    </div>
+    <input type="hidden" name="durum" value="true" />
+</form>

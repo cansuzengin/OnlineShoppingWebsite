@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 240px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 18px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+        .main {
+            margin-left: 240px;
+            padding: 0px 10px;
+        }
+
+        @@media screen and (max-height: 450px) {
+            .sidebar {
+                padding-top: 15px;
+            }
+
+                .sidebar a {
+                    font-size: 18px;
+                }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="text-center">
+
+            <img class="profile-user-img img-fluid img-circle"
+                 src="@Session["image"]"
+                 alt="User profile picture" width="75" style="margin:auto;">
+
+        </div>
+        <label style="color:white; margin-left:50px; font-size:small">@Session["Email"].ToString()</label>
+        <a href="/AdminHomePage/Index/"><i class="fa fa-home" aria-hidden="true"></i> &nbsp; Ana Sayfa </a>
+        <a href="/Category/Index/"><i class="fa fa-list" aria-hidden="true"></i> &nbsp; Kategoriler </a>
+        <a href="/Brand/Index/"><i class="fa fa-bookmark" aria-hidden="true"></i> &nbsp; Markalar </a>
+        <a href="/Product/Index/"><i class="fa fa-female" aria-hidden="true"></i> &nbsp; Ürünler </a>
+        @if (User.IsInRole("A"))
+        {
+            <a href="/Member/Index/"><i class="fa fa-users" aria-hidden="true"></i> &nbsp; Üyeler </a>
+            <a href="/Admin/Index/"><i class="fa fa-address-card" aria-hidden="true"></i> &nbsp; Yöneticiler </a>
+            <a href="/Statistics/Index/"><i class="fa fa-line-chart" aria-hidden="true"></i> &nbsp; İstatistikler </a>
+            <a href="/Comments/Index/"><i class="fa fa-comment" aria-hidden="true"></i> &nbsp; Yorumlar </a>
+        }
+        <a href="/Orders/Index/"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> &nbsp; Siparişler </a>
+        <a href="/Message/Index/"><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp; Mesajlar </a>
+        <a href="/MemberHomePage/HomePage/"><i class="fa fa-image" aria-hidden="true"></i> &nbsp; Vitrin </a>
+        <a href="/Settings/Index/"><i class="fa fa-cogs" aria-hidden="true"></i> &nbsp; Ayarlar </a>
+        <a href="/AdminLogin/LogOut/"><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Çıkış </a>
+    </div>
+
+    <div class="main">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBONLINESHOPPINGModelStoreContainer" CdmEntityContainer="DBONLINESHOPPINGEntities">
+    <EntitySetMapping Name="TBLAdmin">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLAdmin">
+        <MappingFragment StoreEntitySet="TBLAdmin">
+          <ScalarProperty Name="Recovery" ColumnName="Recovery" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Authority" ColumnName="Authority" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLBasket">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLBasket">
+        <MappingFragment StoreEntitySet="TBLBasket">
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Piece" ColumnName="Piece" />
+          <ScalarProperty Name="DateOfAdding" ColumnName="DateOfAdding" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLBrand">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLBrand">
+        <MappingFragment StoreEntitySet="TBLBrand">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLCategory">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLCategory">
+        <MappingFragment StoreEntitySet="TBLCategory">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLGender">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLGender">
+        <MappingFragment StoreEntitySet="TBLGender">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLLike">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLLike">
+        <MappingFragment StoreEntitySet="TBLLike">
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLMember">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLMember">
+        <MappingFragment StoreEntitySet="TBLMember">
+          <ScalarProperty Name="Recovery" ColumnName="Recovery" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLMessage">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLMessage">
+        <MappingFragment StoreEntitySet="TBLMessage">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLOrder">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLOrder">
+        <MappingFragment StoreEntitySet="TBLOrder">
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Piece" ColumnName="Piece" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLProduct">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLProduct">
+        <MappingFragment StoreEntitySet="TBLProduct">
+          <ScalarProperty Name="Star" ColumnName="Star" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Statement" ColumnName="Statement" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="DateOfAdding" ColumnName="DateOfAdding" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="total_number_of_products" FunctionName="DBONLINESHOPPINGModel.Store.total_number_of_products" />
+    <FunctionImportMapping FunctionImportName="total_number_of_brands" FunctionName="DBONLINESHOPPINGModel.Store.total_number_of_brands" />
+    <FunctionImportMapping FunctionImportName="total_number_of_categories" FunctionName="DBONLINESHOPPINGModel.Store.total_number_of_categories" />
+    <FunctionImportMapping FunctionImportName="active_member" FunctionName="DBONLINESHOPPINGModel.Store.active_member" />
+    <FunctionImportMapping FunctionImportName="brand_with_most_products" FunctionName="DBONLINESHOPPINGModel.Store.brand_with_most_products" />
+    <FunctionImportMapping FunctionImportName="category_with_most_products" FunctionName="DBONLINESHOPPINGModel.Store.category_with_most_products" />
+    <FunctionImportMapping FunctionImportName="number_of_message" FunctionName="DBONLINESHOPPINGModel.Store.number_of_message" />
+    <EntitySetMapping Name="TBLComments">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLComments">
+        <MappingFragment StoreEntitySet="TBLComments">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="star_average" FunctionName="DBONLINESHOPPINGModel.Store.star_average">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBONLINESHOPPINGModel.star_average_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="best_products" FunctionName="DBONLINESHOPPINGModel.Store.best_products" />
+    <FunctionImportMapping FunctionImportName="best_like_product" FunctionName="DBONLINESHOPPINGModel.Store.best_like_product" />
+    <EntitySetMapping Name="TBLAddress">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLAddress">
+        <MappingFragment StoreEntitySet="TBLAddress">
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLCargo">
+      <EntityTypeMapping TypeName="DBONLINESHOPPINGModel.TBLCargo">
+        <MappingFragment StoreEntitySet="TBLCargo">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,54 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBLProduct>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ürünler</h2>
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Ürün Adını Girin: &nbsp </b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style=" background-color: #899697">
+        <th>Ürün Id</th>
+        <th>Ürün Adı</th>
+        <th>Kategori Id</th>
+        <th>Marka Id</th>
+        <th>Fiyat</th>
+        <th>Ekleme Tarihi</th>
+        <th>Resim</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var prd in Model)
+    {
+        <tr>
+            <td>@prd.Id</td>
+            <td>@prd.Name</td>
+            <td>@prd.TBLCategory.Id</td>
+            <td>@prd.TBLBrand.Id</td>
+            <td>@prd.Price</td>
+            <td>@prd.DateOfAdding</td>
+            <td><a href="/Product/ImageProduct/@prd.Id" class="btn btn-success" style="background-color:#808080; color:#ffffff">Fotoğraf</a></td>
+            <td>
+                @Html.ActionLink("Sil", "RemoveProduct", new { Id = prd.Id }, new
+                        {
+                            @class
+               = "btn btn-danger",
+                            onclick = "return confirm('Silmek istiyor musunuz?')"
+                        })
+            </td>
+            <td><a href="/Product/FetchProduct/@prd.Id" class="btn btn-success" style="background-color:#217139; color:#ffffff">Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Product/AddingProduct/" class="btn btn-group" style="background-color: #899697; color: #ffffff">Yeni Ürün Ekle</a>

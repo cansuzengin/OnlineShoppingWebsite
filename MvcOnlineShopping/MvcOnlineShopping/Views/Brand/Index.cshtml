@@ -1,0 +1,45 @@
+﻿@using MvcOnlineShopping.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TBLBrand>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Markalar</h2>
+@using (Html.BeginForm("Index", "Brand", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Marka Adını Girin: &nbsp </b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style=" background-color: #899697">
+        <th>Marka Id</th>
+        <th>Marka Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var brd in Model)
+    {
+        <tr>
+            <td>@brd.Id</td>
+            <td>@brd.Name</td>
+            <td>
+                @Html.ActionLink("Sil", "RemoveBrand", new { Id = brd.Id }, new
+                        {
+                            @class
+               = "btn btn-danger",
+                            onclick = "return confirm('Silmek istiyor musunuz?')"
+                        })
+            </td>
+            <td><a href="/Brand/FetchBrand/@brd.Id" class="btn btn-success" style="background-color:#217139; color:#ffffff">Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Brand/AddingBrand/" class="btn btn-group" style="background-color: #899697; color: #ffffff">Yeni Marka Ekle</a>
+<a href="/Brand/PasiveBrand/" class="btn btn-group" style="background-color: #899697; color: #ffffff">Pasif Markalar</a>

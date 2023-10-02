@@ -1,0 +1,42 @@
+﻿@model MvcOnlineShopping.Models.Entity.TBLProduct
+@{
+    ViewBag.Title = "FetchProduct";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateProduct", "Product", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>Id</label>
+        @Html.TextBoxFor(k => k.Id, new { @class = "form-control" })
+        <br />
+        <label>Ad</label>
+        @Html.TextBoxFor(k => k.Name, new { @class = "form-control" })
+        <br />
+        <label>Kategori</label>
+        @Html.DropDownListFor(k => k.TBLCategory.Id, (List<SelectListItem>)ViewBag.values5, new { @class = "form-control" })
+        <br />
+        <label>Marka</label>
+        @Html.DropDownListFor(k => k.TBLBrand.Id, (List<SelectListItem>)ViewBag.values6, new { @class = "form-control" })
+        <br />
+        <label>Fiyat</label>
+        @Html.TextBoxFor(k => k.Price, new { @class = "form-control" })
+        <br />
+        <label>Stok adedi</label>
+        @Html.TextBoxFor(k => k.Stock, new { @class = "form-control" })
+        <br />
+        <label>Ekleme Tarihi</label>
+        @Html.TextBoxFor(k => k.DateOfAdding, new { @class = "form-control" })
+        <br />
+        <label>Renk</label>
+        @Html.TextBoxFor(k => k.Color, new { @class = "form-control" })
+        <br />
+        <label>Fotoğraf</label>
+        @Html.TextBoxFor(k => k.Image, new { @class = "form-control" })
+        <br />
+        <label>Açıklama</label>
+        @Html.TextBoxFor(k => k.Statement, new { @class = "form-control" })
+    </div>
+    <div><button class="btn btn-group" style="background-color:#680f90; color:#ffffff">Güncelle</button></div>
+}
